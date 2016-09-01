@@ -1,0 +1,12 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars:
+    bob:
+      - 'hi'
+      - 'there'
+    result: bob says {{ bob|join(' ') }}
+
+  tasks:
+    - debug: msg={{ result }}
