@@ -1,0 +1,5 @@
+---
+# tasks file for hello-world
+
+- name: Test jinja2template
+  template: src=main.txt.j2 dest=main.txt

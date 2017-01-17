@@ -1,0 +1,9 @@
+
+{% set range_values = range( 1 , num_iterations ) | list %}
+Range Values: {{range_values | pprint(true) }}
+
+{% set format_values = range_values | map('format_one', 'redis-socket:///redis-ttl{0:}/redis.sock') %}
+Format Values: {{format_values | pprint(true) }}
+
+{% set join_values = format_values | join(',') %}
+Join Values: {{join_values }}
