@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-ansible-playbook -i localhost playbook/$1/main.yml --check --diff --connection=local
+: ${PLAYBOOK:="$1"}
+: ${PLAYBOOK:="hello-world"}
+
+ansible-playbook -i localhost "playbook/${PLAYBOOK}/main.yml" --check --diff --connection=local

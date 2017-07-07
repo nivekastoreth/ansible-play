@@ -1,42 +1,7 @@
 ---
 # defaults file for hello-world
 
-zavikon_gc_logging: true
-zavikon_port: 8080
-zavikon_jmx_port: 2222
-zavikon_version: 'VERSION'
-
-zavikon_gc_flags:
-  - "-XX:+PrintGCDetails"
-  - "-XX:+PrintGCTimeStamps"
-  - "-XX:+PrintGCDateStamps"
-  - "-XX:+PrintTenuringDistribution"
-  - "-Xloggc:/srv/zavikon/zavikon%i-gc.log"
-  - "-verbose:gc"
-
-zavikon_java_flags:
-  - "-server"
-  - "-Xmx8G"
-  - "-Xms8G"
-  - "-XX:NewSize=6G"
-  - "-XX:+PerfDisableSharedMem"
-  - "-XX:+HeapDumpOnOutOfMemoryError"
-  - "-XX:+DisableExplicitGC"
-  - "-XX:+UseConcMarkSweepGC"
-  - "-XX:+UseParNewGC"
-  - "-XX:+CMSScavengeBeforeRemark"
-  - "-XX:+ScavengeBeforeFullGC"
-  - "-XX:CMSInitiatingOccupancyFraction=70"
-  - "-Dcom.sun.management.jmxremote"
-  - "-Dcom.sun.management.jmxremote.port={{ zavikon_jmx_port }}"
-  - "-Dcom.sun.management.jmxremote.authenticate=false"
-  - "-Dcom.sun.management.jmxremote.ssl=false"
-  - "-Dcom.sun.management.jmxremote.rmi.port={{ zavikon_jmx_port }}"
-  - "-Dcom.sun.management.jmxremote.local.only=false"
-  - "-Djava.rmi.server.hostname=127.0.0.1"
-  - "-Dlogback.configurationFile=/srv/zavikon/logback.xml"
-
-zavikon_cli_hash:
-  name: 'zavikon'
-  port: '{{ zavikon_port }}'
-
+millau_demand_partners:
+  - name: turn_rubicon
+  - name: adform_rubicon
+  - name: adform_rubicon_with_more_underscores

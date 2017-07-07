@@ -1,16 +1,11 @@
 
-ExecStart=/usr/bin/docker run -u root --net host --name zavikon \
-  -v "/srv/zavikon:/srv/zavikon:z" \
-  {% if zavikon_gc_logging == true -%}
-    -v "/srv/zavikon/gc_logs:/tmp/gc:z"
-  {%- endif %} \
-  quay.io/ntoggle/zavikon:{{zavikon_version}} \
-    java -jar /app/zavikon.jar \
-    {{ zavikon_java_flags|join(' ') }} \
-    {% if zavikon_gc_logging == true -%}
-      {{zavikon_gc_flags|join(' ') }}
-    {%- endif %} \
-    {% for key, value in zavikon_cli_hash.iteritems() -%}
-      {% if value %}--{{key}} {{value}} {% endif -%}
-    {% endfor %}
+{% for value in millau_demand_partners %}
+{% set dp_sp = value.name.split('_', 1) %}
 
+============================
+value.name : {{value.name}}
+dp_sp[0]   : {{dp_sp[0]}}
+dp_sp[1]   : {{dp_sp[1]}}
+============================
+
+{% endfor %}
