@@ -1,0 +1,8 @@
+---
+
+- set_fact:
+    entry_index: "{{inventory.0}}"
+    entry_value: "{{inventory.1}}"
+
+- debug:
+    msg: "Entry Index:[{{ entry_index }}] Entry Value:[{{ entry_value }}]"

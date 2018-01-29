@@ -1,12 +1,17 @@
+#!/bin/bash
 
-{% for value in millau_demand_partners %}
-{% set dp_sp = value.name.split('_', 1) %}
-
-============================
-type       : {{value.name.__class__.__name__}}
-value.name : {{value.name}}
-dp_sp[0]   : {{dp_sp[0]}}
-dp_sp[1]   : {{dp_sp[1]}}
-============================
-
+{% for value in skye_demand_partners[ansible_nodename] %}
+{% if value.skye_enabled|bool %}
+{% set dp_sp = value.name.split('_') %}
+{% if 'retain_discarded' in value %}
+cleanup_discarded {{value.name}} {{value.retain_discarded|as_minutes}}
+{% endif %}
+{% if 'retain_runs' in value %}
+cleanup_runs {{value.name}} {{value.retain_runs|as_minutes}}
+{% endif %}
+{% endif %}
 {% endfor %}
+
+# Delete files older than specified period, regardless of whether or not the inventory has a configured retention value
+cleanup_discarded '*' {{skye_retention_discarded|as_minutes}}
+cleanup_runs '*' {{skye_retention_runs|as_minutes}}

@@ -1,7 +1,29 @@
 ---
 # defaults file for hello-world
 
-millau_demand_partners:
+test_demand_partners:
   - name: turn_rubicon
   - name: adform_rubicon
   - name: adform_rubicon_with_more_underscores
+
+skye_retention_discarded: '5h'
+skye_retention_runs: '10d'
+
+ansible_nodename: 'spark11'
+
+skye_demand_partners:
+  spark11:
+    - name: enabled_no_value
+      skye_enabled: true
+
+    - name: enabled_value
+      skye_enabled: true
+      retain_discarded: '5h' # optional
+      retain_runs: '10d'     # optional
+
+    - name: disabled_no_value
+      skye_enabled: false
+
+    - name: disabled_value
+      skye_enabled: false
+      retain_discarded: 2m

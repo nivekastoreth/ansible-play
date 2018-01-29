@@ -3,3 +3,10 @@
 
 - name: Test jinja2template
   template: src=helloworld.txt.j2 dest=helloworld.txt
+
+- name: Test per-entry indexing
+  include: per-entry-actions.yml
+#  with_items: "{{ test_demand_partners }}"
+  with_indexed_items: "{{ test_demand_partners }}"
+  loop_control:
+    loop_var: inventory
