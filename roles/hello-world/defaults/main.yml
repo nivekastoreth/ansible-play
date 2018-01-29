@@ -9,9 +9,9 @@ test_demand_partners:
 skye_retention_discarded: '5h'
 skye_retention_runs: '10d'
 
-ansible_nodename: 'spark11'
+test_nodename: 'spark11'
 
-skye_demand_partners:
+test_value_existence_list:
   spark11:
     - name: enabled_no_value
       skye_enabled: true

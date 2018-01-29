@@ -1,6 +1,6 @@
 #!/bin/bash
 
-{% for value in skye_demand_partners[ansible_nodename] %}
+{% for value in test_value_existence_list[test_nodename] %}
 {% if value.skye_enabled|bool %}
 {% set dp_sp = value.name.split('_') %}
 {% if 'retain_discarded' in value %}
