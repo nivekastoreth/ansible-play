@@ -1,5 +1,13 @@
 ---
 
+- name: Ensure this is called via a with_indexed_items loop
+  fail:
+  when: item is undefined
+  with_items:
+    - "{{inventory}}"
+    - "{{inventory.0}}"
+    - "{{inventory.1}}"
+
 - set_fact:
     entry_index: "{{inventory.0}}"
     entry_value: "{{inventory.1}}"
