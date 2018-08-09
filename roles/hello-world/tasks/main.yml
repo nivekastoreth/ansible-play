@@ -24,7 +24,7 @@
   tags:
     - sub_task
 
-- name: Test child fold tasks
+- name: Test looping over a dictionary
   include: loop-over-dict.yml
   with_items:
     - first_name: "Bob"
