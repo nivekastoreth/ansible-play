@@ -16,10 +16,22 @@
 
 - name: Test child fold tasks
   include: subtasks/main.yml
-  with_indexed_items:
+  with_items:
     - "bob villa"
     - "bob ross"
   loop_control:
     loop_var: bob
   tags:
     - sub_task
+
+- name: Test child fold tasks
+  include: loop-over-dict.yml
+  with_items:
+    - first_name: "Bob"
+      last_name: "Villa"
+    - first_name: "Bob"
+      last_name: "Ross"
+  loop_control:
+    loop_var: bob
+  tags:
+    - dict_loop

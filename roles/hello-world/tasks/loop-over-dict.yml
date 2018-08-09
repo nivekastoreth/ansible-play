@@ -1,0 +1,3 @@
+---
+
+- debug: msg="Subtask called {{bob.first_name}} {{bob.last_name}}"
