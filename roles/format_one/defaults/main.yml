@@ -1,2 +1,43 @@
 ---
 num_iterations: 5
+
+app_basedir: 'app'
+kubitschek_version: '2.1.0-DSPT-2598-RC6'
+nginx_proxy_version: 'latest'
+kubitschek_postgresql_enabled: false
+kubitschek_jmx_port: 2226
+java_xmx_mem: '16G'
+java_xms_mem: '16G'
+
+kubitschek_java_flags:
+  - '-server'
+  - '-XX:ObjectAlignmentInBytes=16'
+  - '-Xmx{{java_xmx_mem}}'
+  - '-Xms{{java_xms_mem}}'
+  - '-XX:+AlwaysPreTouch'
+  - '-XX:+HeapDumpOnOutOfMemoryError'
+  - '-XX:+UseConcMarkSweepGC'
+  - '-XX:+UseParNewGC '
+  - '-XX:+CMSScavengeBeforeRemark'
+  - '-XX:+ScavengeBeforeFullGC'
+  - '-XX:CMSInitiatingOccupancyFraction=70'
+  - '-Dcom.sun.management.jmxremote'
+  - '-Dcom.sun.management.jmxremote.port={{ kubitschek_jmx_port }}'
+  - '-Dcom.sun.management.jmxremote.authenticate=false'
+  - '-Dcom.sun.management.jmxremote.ssl=false'
+  - '-Dcom.sun.management.jmxremote.rmi.port={{ kubitschek_jmx_port }}'
+  - '-Dcom.sun.management.jmxremote.local.only=false'
+  - '-Djava.rmi.server.hostname=127.0.0.1'
+
+kubitschek_postgres_hostname: postgresql
+kubitschek_postgres_database: kubitschek
+kubitschek_postgres_pool_size: 20
+kubitschek_audobon_web_enable: "true"
+kubitschek_audobon_web_port: 1973
+kubitschek_audobon_web_timeout: 5000
+kubitschek_port: 9000
+kubitschek_http_server_req_timeout: 60s
+kubitschek_http_client_conn_timeout: 2s
+kubitschek_http_client_idle_timeout: 10s
+kubitschek_http_server_keep_alive: "true"
+
