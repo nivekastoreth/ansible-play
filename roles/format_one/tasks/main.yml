@@ -3,3 +3,21 @@
 
 - name: Test jinja2template
   template: src=main.txt.j2 dest=main.txt
+
+- name: Create dirs
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  with_items:
+    - "{{ guleumdali_builds_dir}} "
+
+- name: Install guleumdali jar
+  maven_artifact:
+    group_id: "{{guleumdali_groupId}}"
+    artifact_id: "{{guleumdali_artifactId}}"
+    version: "{{guleumdali_version}}"
+    classifier: assembly
+    state: present
+    repository_url: "{{guleumdali_repository_url}}"
+    dest: "{{guleumdali_jar}}"

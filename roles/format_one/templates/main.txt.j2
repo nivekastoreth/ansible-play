@@ -8,14 +8,14 @@ Format Values: {{ format_values | pprint(true) }}
 {% set join_values = format_values | join(',') %}
 Join Values: {{ join_values }}
 
-
+{% set java_flags = kubitschek_java_flags + additional_java_flags + (sometimes_java_flags if sometimes_java else []) %}
 ExecStart=/usr/bin/docker run --net=host --name kubitschek \
   -v "/{{app_basedir}}/kubitschek/conf:/conf:z" \
   -v "/{{app_basedir}}/kubitschek/log:/logs:z" \
   -p ansible_default_ipv4.address:9000:9000 \
   quay.io/ntoggle/kubitschek:{{kubitschek_version}} \
   java \
-    {{ kubitschek_java_flags | join(" \\\n    ") }} \
+    {{ java_flags | join(" \\\n    ") }} \
     -Dhttp.interface=0.0.0.0 \
     -Dlogback.configurationFile=/conf/logback.xml \
     -jar /app/kubitschek-service.jar \
